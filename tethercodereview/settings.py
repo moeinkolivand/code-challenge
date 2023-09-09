@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", None)
 
 if SECRET_KEY is None or len(SECRET_KEY) == 0:
-    raise ImproperlyConfigured("Secret Must Be Set!")
+    raise ImproperlyConfigured("Secret Key Must Be Set!")
 
 DEBUG = True
 
