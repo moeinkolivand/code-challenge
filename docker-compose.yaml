@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: postgres.dockerfile
+    volumes:
+      - ./config.sh:/docker-entrypoint-initdb.d/config.sh
+    env_file:
+      - .env
+    ports:
+      - "${DB_PORT}:5432"
+    command: -p ${DB_PORT}
+  web:
+    build:
+      context: .
+      dockerfile: django.dockerfile
+    command: bash start.sh
+    volumes:
+      - .:/code
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+    links:
+      - db
