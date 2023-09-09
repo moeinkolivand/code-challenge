@@ -9,6 +9,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY", None)
 
+if SECRET_KEY is None:
+    raise ImproperlyConfigured("Secret Must Be Set!")
+
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
