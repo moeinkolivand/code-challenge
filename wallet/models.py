@@ -7,6 +7,7 @@ User = get_user_model()
 
 
 class Wallet(BaseModel):
+    # User Wallet
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, verbose_name="User Wallet"
     )
@@ -24,13 +25,17 @@ class Wallet(BaseModel):
 
 
 class WalletCurrency(BaseModel):
+    """
+    User Wallet Currencyies
+    """
+
     currency = models.ForeignKey(
         Currency, on_delete=models.SET_NULL, verbose_name="currency", null=True
     )
     wallet = models.OneToOneField(
         Wallet, on_delete=models.CASCADE, verbose_name="Wallet"
     )
-    quantity = models.SmallIntegerField(verbose_name="quantity")
+    quantity = models.BigIntegerField(verbose_name="quantity")
     buy_price = models.DecimalField(max_digits=8, decimal_places=2)
 
     def wallet_worth(self):
