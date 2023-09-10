@@ -15,4 +15,4 @@ class Currency(BaseModel):
 
     class Meta:
         verbose_name = "currency"
-        verbose_name_plural = 'currencies'
+        verbose_name_plural = "currencies"

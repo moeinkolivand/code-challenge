@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "user.apps.UserConfig",
     "currency.apps.CurrencyConfig",
-    "wallet.apps.WalletConfig"
+    "wallet.apps.WalletConfig",
 ]
 
 MIDDLEWARE = [
