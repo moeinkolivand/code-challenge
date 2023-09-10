@@ -1,4 +1,4 @@
 
-FROM postgres:14-alpine
+FROM postgres:14
 
-EXPOSE 5433
+EXPOSE 5432
