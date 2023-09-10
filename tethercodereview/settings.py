@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "user.apps.UserConfig",
 ]
 
 MIDDLEWARE = [
@@ -59,13 +60,13 @@ WSGI_APPLICATION = "tethercodereview.wsgi.application"
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DB_ENGINE', "django.db.backends.sqlite3"),
-        'NAME': os.environ.get('DB_NAME', BASE_DIR / "db.sqlite3"),
-        'USER': os.environ.get('DB_USER', 'TEST'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'TEST'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '8191'),
+    "default": {
+        "ENGINE": os.environ.get("DB_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("DB_NAME", BASE_DIR / "db.sqlite3"),
+        "USER": os.environ.get("DB_USER", "TEST"),
+        "PASSWORD": os.environ.get("DB_PASSWORD", "TEST"),
+        "HOST": os.environ.get("DB_HOST", "localhost"),
+        "PORT": os.environ.get("DB_PORT", "8191"),
     }
 }
 
@@ -94,31 +95,39 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+STATIC_ROOT = f"{BASE_DIR}/{STATIC_URL}"
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = f"{BASE_DIR}/{MEDIA_URL}"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Logger Configuration
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'console': {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "console": {
             # exact format is not important, this is the minimum information
-            'format': '%(levelname)-8s %(asctime)s  %(message)s',
+            "format": "%(levelname)-8s %(asctime)s  %(message)s",
         },
     },
-    'handlers': {
-        'file': {
-            'level': 'WARNING',
-            'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'warning.log',
-            'formatter': 'console',
+    "handlers": {
+        "file": {
+            "level": "WARNING",
+            "class": "logging.FileHandler",
+            "filename": BASE_DIR / "warning.log",
+            "formatter": "console",
         },
     },
-    'loggers': {
-        '': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True,
+    "loggers": {
+        "": {
+            "handlers": ["file"],
+            "level": "INFO",
+            "propagate": True,
         },
     },
 }
+
+# User Configuration
+AUTH_USER_MODEL = "user.User"
