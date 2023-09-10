@@ -19,16 +19,20 @@ ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
+    # Default Apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Local Apps
     "user.apps.UserConfig",
     "currency.apps.CurrencyConfig",
     "wallet.apps.WalletConfig",
     "payment.apps.PaymentConfig",
+    # Installed Apps
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
