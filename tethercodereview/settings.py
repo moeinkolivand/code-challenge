@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     "wallet.apps.WalletConfig",
     "payment.apps.PaymentConfig",
     # Installed Apps
-    'rest_framework',
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
