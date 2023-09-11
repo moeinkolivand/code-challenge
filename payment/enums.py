@@ -7,6 +7,6 @@ class PAYMENTSTATUS(models.IntegerChoices):
     TRANSFERRED = 1, _("TRANSFERRED")
 
 
-class GATESTATUS(models.IntegerChoices):
+class TRANSACTIONSTATUS(models.IntegerChoices):
     UNPAID = 0, _("Un Paid")
     PAID = 1, _("Paid")
