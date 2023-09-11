@@ -12,9 +12,6 @@ class Wallet(BaseModel):
         User, on_delete=models.CASCADE, verbose_name="User Wallet"
     )
     balance = models.DecimalField(max_digits=8, decimal_places=2)
-    currency = models.ManyToManyField(
-        Currency, related_name="wallet_currency", through="WalletCurrency"
-    )
 
     def __str__(self):
         return self.user.get_full_name()
@@ -37,6 +34,7 @@ class WalletCurrency(BaseModel):
     )
     quantity = models.BigIntegerField(verbose_name="quantity")
     buy_price = models.DecimalField(max_digits=8, decimal_places=2)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="user")
 
     def wallet_worth(self):
         """
