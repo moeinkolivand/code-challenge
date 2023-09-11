@@ -13,6 +13,7 @@ class Payment(BaseModel):
     currency = models.ForeignKey(
         Currency, on_delete=models.SET_NULL, null=True, verbose_name="Currency"
     )
+    # TODO:: We Can Change It TO Float Or Deciaml
     quantity = models.BigIntegerField(verbose_name="quantity")
     status = models.SmallIntegerField(
         choices=PAYMENTSTATUS.choices, default=PAYMENTSTATUS.NOT_TRANSFERRED
@@ -34,6 +35,7 @@ class Transaction(BaseModel):
     currency = models.ForeignKey(
         Currency, on_delete=models.SET_NULL, null=True, verbose_name="Currency"
     )
+    # TODO:: We Can Change It TO Float Or Deciaml
     quantity = models.BigIntegerField(verbose_name="quantity")
     payment = models.ForeignKey(
         Payment, on_delete=models.CASCADE, related_name="gate_payment"

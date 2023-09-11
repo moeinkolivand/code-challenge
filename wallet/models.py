@@ -29,9 +29,7 @@ class WalletCurrency(BaseModel):
     currency = models.ForeignKey(
         Currency, on_delete=models.SET_NULL, verbose_name="currency", null=True
     )
-    wallet = models.OneToOneField(
-        Wallet, on_delete=models.CASCADE, verbose_name="Wallet"
-    )
+    wallet = models.ForeignKey(Wallet, on_delete=models.CASCADE, verbose_name="Wallet")
     quantity = models.BigIntegerField(verbose_name="quantity")
     buy_price = models.DecimalField(max_digits=8, decimal_places=2)
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="user")
